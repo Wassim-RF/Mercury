@@ -29,7 +29,7 @@
                         <div class="text-slate-400 text-sm font-medium leading-tight">Organized<br>Categories</div>
                     </div>
 
-                    <div class="bg-blue-500 p-8 rounded-2xl shadow-lg text-white md:col-span-1">
+                    <div class="bg-[#4B91E2] p-8 rounded-2xl shadow-lg text-white md:col-span-1">
                         <h2 class="text-2xl font-bold mb-1">Quick Actions</h2>
                         <p class="text-blue-100 mb-6">Manage your directory efficiently</p>
                         
