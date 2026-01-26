@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 class groupController extends Controller
 {
     public function index() {
-        header("/groups");
-        exit;
+        return view("home");
     }
 
     public function groups() {

@@ -4,6 +4,7 @@
         <span class="text-xl font-semibold text-gray-800">Mercury</span>
     </div>
     <nav class="hidden md:flex items-center gap-8 text-gray-600 font-medium">
+        <a href="/home" class="hover:text-indigo-600 transition">Home</a>
         <a href="/groups" class="hover:text-indigo-600 transition">Groups</a>
         <a href="/contacts" class="hover:text-indigo-600 transition">Contacts</a>
     </nav>
