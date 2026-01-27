@@ -18,7 +18,7 @@ class contactController extends Controller
         $validated = $request->validate([
             'contact_name' => 'required|string|max:50',
             'contact_phone' => 'required|string|max:50',
-            'group_id' => 'required|integer|nullable'
+            'group_id' => 'required|exists:groups,id'
         ]);
 
         $data = [

@@ -24,17 +24,23 @@
                         placeholder="600-000000">
                 </div>
             </div>
+            @if ($_SERVER['REQUEST_URI'] === '/home' || $_SERVER['REQUEST_URI'] === '/contacts')
+                <div>
+                    <label for="contact_group" class="block text-sm font-medium text-gray-700 mb-2">Choisir un groupe</label>
+                    <select id="contact_group" name="group_id" required
+                        class="block w-full rounded-lg border-gray-300 border px-3 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                        <option value="" selected disabled>-- Sélectionnez un groupe --</option>
+                        @foreach ($groups as $group)
+                            <option value="{{ $group['id'] }}">{{ $group['name'] }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            @endif
 
-            <div>
-                <label for="contact_group" class="block text-sm font-medium text-gray-700 mb-2">Choisir un groupe</label>
-                <select id="contact_group" name="group_id" required
-                    class="block w-full rounded-lg border-gray-300 border px-3 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
-                    <option value="" selected disabled>-- Sélectionnez un groupe --</option>
-                    @foreach ($groups as $group)
-                        <option value="{{ $group['id'] }}">{{ $group['name'] }}</option>
-                    @endforeach
-                </select>
-            </div>
+            @if (request()->is('group'))
+                <input type="hidden" name="group_id" value="{{ request('id') }}">
+            @endif
+
 
             <div class="pt-4 flex gap-3">
                 <button type="submit" class="flex-1 bg-blue-600 text-white py-2.5 rounded-lg font-semibold hover:bg-green-700 transition-colors shadow-sm">

@@ -21,3 +21,8 @@ export function hiddeAddContactModal() {
 
     modale_pop.classList.replace("flex" , "hidden");
 }
+
+export function showEditGroupModal() {
+    console.log("click edit");
+    
+}

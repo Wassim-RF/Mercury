@@ -16,7 +16,10 @@
                 </div>
                 
                 <div class="flex gap-3">
-                    <button class="bg-[#3F94E9] hover:bg-[#1e83e7] text-white px-5 py-2.5 rounded-lg font-medium flex items-center transition">
+                    <button class="bg-[#3F94E9] hover:bg-[#1e83e7] text-white px-5 py-2.5 rounded-lg font-medium flex items-center transition" id="edit_group_button">
+                        <span class="mr-2 text-xl">+</span> Edit
+                    </button>
+                    <button class="bg-[#3F94E9] hover:bg-[#1e83e7] text-white px-5 py-2.5 rounded-lg font-medium flex items-center transition" id="create_newContact--Button">
                         <span class="mr-2 text-xl">+</span> Add Contact
                     </button>
                 </div>
@@ -94,6 +97,8 @@
 
         </section>
     </main>
-
+    @include('mod.createNewContact')
+    {{-- @include('mod.createNewGroup') --}}
+    <script type="module" src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>
