@@ -12,5 +12,9 @@ class groupController extends Controller
 
     public function groups() {
         return view("groups.groups");
+    }  
+
+    public function showOneGroup() {
+        return view("groups.showGroup");
     }
 }

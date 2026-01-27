@@ -3,12 +3,17 @@
     <main class="w-full" id="main_page">
         @include('layout.header')
         <section class="w-full p-[2%] pl-[5%] pr-[5%]">
-            
-            <div class="flex justify-between items-start mb-8">
-                <div>
-                    <h1 class="text-3xl font-bold text-slate-800">Contacts</h1>
-                    <p class="text-gray-500 mt-1">Manage your address book.</p>
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10">
+
+                <div class="relative w-full md:w-[600px]">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <input type="text" class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 rounded-lg leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm shadow-sm"  placeholder="Rechercher un contact par nom, email ou téléphone...">
                 </div>
+
                 <div class="flex gap-3">
                     <button class="inline-flex items-center px-4 py-2.5 border border-transparent text-sm font-medium rounded-lg text-gray-700 bg-gray-100 hover:bg-gray-200 focus:outline-none transition-colors" id="create_newGroupe--Button">
                         <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -18,21 +23,12 @@
                     </button>
                 </div>
             </div>
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10 w-3/4">
-
-                <div class="relative flex-1">
-                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                    <input type="text" placeholder="Search by name or email..." 
-                        class="w-full pl-11 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition">
-                </div>
-
-            </div>
 
             <h2 class="text-xl font-bold text-gray-900 mb-6">Groupes</h2>
 
-           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                <a href="/group" class="group relative bg-white rounded-xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-all duration-200">
+                <div class="group relative bg-white rounded-xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-all duration-200">
                     
                     <div class="absolute top-5 right-5 flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                         <button class="text-gray-400 hover:text-blue-600 transition-colors">
@@ -56,7 +52,7 @@
                         <h3 class="text-lg font-bold text-gray-900">Famille</h3>
                         <p class="text-gray-500 text-sm mt-1">3 contacts</p>
                     </div>
-                </a>
+                </div>
 
                 <div class="group relative bg-white rounded-xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-all duration-200">
                     
@@ -100,3 +96,4 @@
     @include('mod.createNewGroup')
     <script type="module" src="{{ asset('js/script.js') }}"></script>
 </body>
+</html>
