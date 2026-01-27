@@ -8,4 +8,8 @@
         public function groupeNumber() {
             return group::count();
         }
+
+        public function showLastFourGroup() {
+            return group::latest()->take(4)->get();
+        }
     }

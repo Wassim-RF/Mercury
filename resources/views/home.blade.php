@@ -56,44 +56,24 @@
                 <div class="lg:col-span-2 bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
                     <div class="flex justify-between items-center mb-8">
                         <div>
-                            <h2 class="text-xl font-bold text-slate-900">Your Groups</h2>
-                            <p class="text-slate-500">Browse contacts by category</p>
+                            <h2 class="text-xl font-bold text-slate-900">Recent Groups</h2>
+                            <p class="text-slate-500">Latest additions to your directory</p>
                         </div>
                         <a href="/groups" class="text-slate-600 font-medium flex items-center gap-1 hover:underline">
                             View All <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </a>
                     </div>
-
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="flex items-center gap-4 p-5 rounded-xl border border-blue-100 bg-white hover:bg-slate-50 transition-colors cursor-pointer">
-                            <div class="bg-blue-50 p-3 rounded-full">
-                                <i data-lucide="folder" class="text-blue-600 w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-slate-900 text-lg">Work</h3>
-                                <p class="text-slate-500 text-sm">Colleagues and partners</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4 p-5 rounded-xl border border-gray-100 bg-white hover:bg-slate-50 transition-colors cursor-pointer">
-                            <div class="p-3">
-                                <i data-lucide="folder" class="text-slate-800 w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-slate-900 text-lg">Family</h3>
-                                <p class="text-slate-500 text-sm">Family members</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4 p-5 rounded-xl border border-gray-100 bg-white hover:bg-slate-50 transition-colors cursor-pointer">
-                            <div class="p-3">
-                                <i data-lucide="folder" class="text-slate-800 w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-slate-900 text-lg">Friends</h3>
-                                <p class="text-slate-500 text-sm">Close friends</p>
-                            </div>
-                        </div>
+                        @foreach ($lastFourGroups as $group) :
+                            <a href="/group?id={{ $group['id'] }}" class="flex items-center gap-4 p-5 rounded-xl border border-blue-100 bg-white hover:bg-slate-50 transition-colors cursor-pointer">
+                                <div class="bg-[{{ $group['color'] }}] p-3 rounded-full">
+                                    {{ $logo[$group['logo']] }}
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 text-lg">{{ $group['name'] }}</h3>
+                                </div>
+                            </a>
+                        @endforeach
                     </div>
                 </div>
 
@@ -102,40 +82,21 @@
                     <p class="text-slate-500 mb-8 leading-tight">Latest additions to your directory</p>
 
                     <div class="space-y-6">
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-semibold">A</div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 leading-none">Alice Johnson</h4>
-                                <span class="text-slate-400 text-sm">alice@company.com</span>
+                        @foreach ($lastThreeContacts as $contact) :
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-semibold">{{ strtoupper($contact['name']['0']) }}</div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 leading-none">{{ ucfirst($contact['name']) }}</h4>
+                                    <span class="text-slate-400 text-sm">{{ $contact['phone_number'] }}</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-semibold">B</div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 leading-none">Bob Smith</h4>
-                                <span class="text-slate-400 text-sm">bob@family.com</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-semibold">C</div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 leading-none">Charlie Brown</h4>
-                                <span class="text-slate-400 text-sm">charlie@gmail.com</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-semibold">D</div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 leading-none">Diana Prince</h4>
-                                <span class="text-slate-400 text-sm">diana@work.com</span>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </section>
     </main>
-    @include('mod.CreateNewGroup')
+    @include('mod.createNewGroup')
     @include('mod.createNewContact')
     <script type="module" src="{{ asset('js/script.js') }}"></script>
 </body>

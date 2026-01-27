@@ -8,4 +8,8 @@
         public function contactsNumber() {
             return contacts::count();
         }
+
+        public function showLastThreeContacts() {
+            return contacts::latest()->take(3)->get();
+        }
     }
