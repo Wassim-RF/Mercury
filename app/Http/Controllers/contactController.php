@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 
 class contactController extends Controller
 {
-    public function index(GroupService $groupService) {
+    public function index(GroupService $groupService , ContactsService $contactsService) {
         $groups = $groupService->showAllGroup();
-        return view("contacts.contacts" , compact(['groups']));
+        $contacts = $contactsService->showAllGroup();
+        return view("contacts.contacts" , compact(['groups' , 'contacts']));
     }
 
     public function store(Request $request , ContactsService $contactsService) {

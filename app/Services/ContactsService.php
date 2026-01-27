@@ -16,4 +16,8 @@
         public function createContact(array $data) {
             return contacts::create($data);
         }
+
+        public function showAllGroup() {
+            return contacts::all();
+        }
     }

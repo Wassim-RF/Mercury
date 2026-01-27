@@ -42,62 +42,23 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100">
-                        <tr class="hover:bg-gray-50/50 transition">
-                            <td class="px-6 py-4 flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold mr-4">A</div>
-                                <span class="font-medium text-gray-800">Alice Johnson</span>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-600 flex items-center mb-1">
-                                    <i class="fa-regular fa-envelope mr-2 w-4"></i> alice@company.com
-                                </div>
-                                <div class="text-sm text-gray-600 flex items-center">
-                                    <i class="fa-solid fa-phone mr-2 w-4"></i> 555-0123
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold uppercase tracking-wider">Work</span>
-                            </td>
-                            <td class="px-6 py-4"></td>
-                        </tr>
-
-                        <tr class="hover:bg-gray-50/50 transition">
-                            <td class="px-6 py-4 flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold mr-4">B</div>
-                                <span class="font-medium text-gray-800">Bob Smith</span>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-600 flex items-center mb-1">
-                                    <i class="fa-regular fa-envelope mr-2 w-4"></i> bob@family.com
-                                </div>
-                                <div class="text-sm text-gray-600 flex items-center">
-                                    <i class="fa-solid fa-phone mr-2 w-4"></i> 555-0124
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold uppercase tracking-wider">Family</span>
-                            </td>
-                            <td class="px-6 py-4"></td>
-                        </tr>
-                        
-                        <tr class="hover:bg-gray-50/50 transition">
-                            <td class="px-6 py-4 flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold mr-4">C</div>
-                                <span class="font-medium text-gray-800">Charlie Brown</span>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-600 flex items-center mb-1">
-                                    <i class="fa-regular fa-envelope mr-2 w-4"></i> charlie@gmail.com
-                                </div>
-                                <div class="text-sm text-gray-600 flex items-center">
-                                    <i class="fa-solid fa-phone mr-2 w-4"></i> 555-0125
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold uppercase tracking-wider">Friends</span>
-                            </td>
-                            <td class="px-6 py-4"></td>
-                        </tr>
+                        @foreach ($contacts as $contact)
+                            <tr class="hover:bg-gray-50/50 transition">
+                                <td class="px-6 py-4 flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold mr-4">A</div>
+                                    <span class="font-medium text-gray-800">{{ $contact['name'] }}</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="text-sm text-gray-600 flex items-center">
+                                        <i class="fa-solid fa-phone mr-2 w-4"></i> {{ $contact['phone_number'] }}
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold uppercase tracking-wider">Work</span>
+                                </td>
+                                <td class="px-6 py-4"></td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
