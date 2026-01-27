@@ -8,7 +8,7 @@
                     <h1 class="text-3xl font-bold text-slate-800">Contacts</h1>
                     <p class="text-gray-500 mt-1">Manage your address book.</p>
                 </div>
-                <button class="bg-[#3F94E9] hover:bg-[#1e83e7] text-white px-5 py-2.5 rounded-lg font-medium flex items-center transition">
+                <button id="create_newContact--Button" class="bg-[#3F94E9] hover:bg-[#1e83e7] text-white px-5 py-2.5 rounded-lg font-medium flex items-center transition">
                     <span class="mr-2 text-xl">+</span> Add Contact
                 </button>
             </div>

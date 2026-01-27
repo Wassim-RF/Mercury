@@ -13,6 +13,10 @@
             return group::latest()->take(4)->get();
         }
 
+        public function showAllGroup() {
+            return group::all();
+        }
+
         public function creatGroup(array $data) {
             return group::create($data);
         }

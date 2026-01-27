@@ -12,4 +12,8 @@
         public function showLastThreeContacts() {
             return contacts::latest()->take(3)->get();
         }
+
+        public function createContact(array $data) {
+            return contacts::create($data);
+        }
     }

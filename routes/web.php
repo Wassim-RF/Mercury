@@ -14,3 +14,4 @@ Route::get('/group' , [groupController::class , 'showOneGroup']);
 // Post
 Route::post('/home' , [groupController::class , 'store'])->name('groups.store');
 Route::post('/groups' , [groupController::class , 'store'])->name('groups.store');
+Route::post('/home' , [contactController::class , 'store'])->name('contacts.store');
