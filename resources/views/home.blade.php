@@ -66,7 +66,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         @foreach ($lastFourGroups as $group)
                             <a href="/group?id={{ $group['id'] }}" class="flex items-center gap-4 p-5 rounded-xl border border-blue-100 bg-white hover:bg-slate-50 transition-colors cursor-pointer">
-                                <div class="bg-[{{ $group['color'] }}] p-3 rounded-full">
+                                <div class="bg-[#{{ $group['color'] }}] p-3 rounded-2xl text-white">
                                     {!! $logo[$group['logo']] !!}
                                 </div>
                                 <div>
