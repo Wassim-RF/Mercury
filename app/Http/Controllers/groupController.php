@@ -30,4 +30,22 @@ class groupController extends Controller
     public function showOneGroup() {
         return view("groups.showGroup");
     }
+
+    public function store(Request $request , GroupService $groupService) {
+        $validated = $request->validate([
+            'group_name' => 'required|string|max:255',
+            'group_color' => 'required|string|max:50',
+            'group_logo' => 'required|string|max:255',
+        ]);
+
+        $data = [
+            'name' => $validated['group_name'],
+            'color' => $validated['group_color'],
+            'logo' => $validated['group_logo'],
+        ];
+
+        $groupService->creatGroup($data);
+
+        return redirect()->back()->with('success', 'Group created successfully!');
+    }
 }

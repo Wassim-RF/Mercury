@@ -64,10 +64,10 @@
                         </a>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        @foreach ($lastFourGroups as $group) :
+                        @foreach ($lastFourGroups as $group)
                             <a href="/group?id={{ $group['id'] }}" class="flex items-center gap-4 p-5 rounded-xl border border-blue-100 bg-white hover:bg-slate-50 transition-colors cursor-pointer">
                                 <div class="bg-[{{ $group['color'] }}] p-3 rounded-full">
-                                    {{ $logo[$group['logo']] }}
+                                    {!! $logo[$group['logo']] !!}
                                 </div>
                                 <div>
                                     <h3 class="font-bold text-slate-900 text-lg">{{ $group['name'] }}</h3>
@@ -82,7 +82,7 @@
                     <p class="text-slate-500 mb-8 leading-tight">Latest additions to your directory</p>
 
                     <div class="space-y-6">
-                        @foreach ($lastThreeContacts as $contact) :
+                        @foreach ($lastThreeContacts as $contact)
                             <div class="flex items-center gap-4">
                                 <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-semibold">{{ strtoupper($contact['name']['0']) }}</div>
                                 <div>
