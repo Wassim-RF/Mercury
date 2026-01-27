@@ -16,16 +16,16 @@
                             <span class="text-slate-500 font-medium text-lg">Total Contacts</span>
                             <i data-lucide="users" class="text-slate-400 w-5 h-5"></i>
                         </div>
-                        <div class="text-4xl font-bold text-slate-900 mb-2">4</div>
+                        <div class="text-4xl font-bold text-slate-900 mb-2">{{ $contactNumber }}</div>
                         <div class="text-slate-400 text-sm font-medium">+2 from last month</div>
                     </div>
 
                     <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
                         <div class="flex justify-between items-start mb-4">
-                            <span class="text-slate-500 font-medium text-lg">Active Groups</span>
+                            <span class="text-slate-500 font-medium text-lg">Total Groups</span>
                             <i data-lucide="folder" class="text-slate-400 w-5 h-5"></i>
                         </div>
-                        <div class="text-4xl font-bold text-slate-900 mb-2">3</div>
+                        <div class="text-4xl font-bold text-slate-900 mb-2">{{ $groupNumber }}</div>
                         <div class="text-slate-400 text-sm font-medium leading-tight">Organized<br>Categories</div>
                     </div>
 
