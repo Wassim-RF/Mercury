@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\ContactsService;
 use App\Services\GroupService;
+use App\Models\contacts;
 use Illuminate\Http\Request;
 
 class contactController extends Controller
@@ -30,6 +31,14 @@ class contactController extends Controller
         $contactsService->createContact($data);
 
         return redirect()->back()->with('success', 'Contact ajouté en success');
+    }
+
+    public function update(Request $request) {
+        contacts::find($request->contact_id)->update([
+            'name' => $request->contact_name,
+            'phone_number' => $request->contact_phone,
+            'group_id' => $request->group_id
+        ]);
     }
 
     public function destroy(Request $request , ContactsService $contactsService) {
