@@ -22,7 +22,32 @@ export function hiddeAddContactModal() {
     modale_pop.classList.replace("flex" , "hidden");
 }
 
-export function showEditGroupModal() {
-    console.log("click edit");
-    
+export function showEditGroupModal(button) {
+    const modale_pop = document.getElementById("modale_NewGroupe_pop");
+
+    const id = button.dataset.id;
+    const name = button.dataset.name;
+    const color = button.dataset.color;
+    const logo = button.dataset.logo;
+
+    console.log(id);
+    console.log(name);
+    console.log(color);
+    console.log(logo);
+
+    const from = document.getElementById("group_form");
+    from.action = '/groups/store';
+
+    document.getElementById("groupId").value = id;
+    document.querySelectorAll('input[name="group_logo"]').forEach(i => {
+        i.checked = i.value === logo
+    });
+    document.querySelectorAll('input[name="group_name"]').forEach(i => {
+        i.value = name
+    });
+    document.querySelectorAll('input[name="group_color"]').forEach(i => {
+        i.checked = i.value === color
+    })
+
+    modale_pop.classList.replace("hidden" , "flex");
 }

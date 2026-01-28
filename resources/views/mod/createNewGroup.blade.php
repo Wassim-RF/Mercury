@@ -1,6 +1,7 @@
 <div class="fixed inset-0 hidden items-center justify-center bg-black/50" id="modale_NewGroupe_pop">
-    <form action="{{ route('groups.store') }}" method="POST" class="w-[400px] mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 absolute button-[50%]">        
+    <form id="group_form" action="/groups/store" method="POST" class="w-[400px] mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 absolute button-[50%]">        
         @csrf
+        @method('PUT')
         <div class="px-6 py-4 border-b border-gray-100 bg-gray-50">
             <h3 class="text-lg font-semibold text-gray-900">Créer un nouveau groupe</h3>
         </div>
@@ -8,7 +9,7 @@
         <div class="p-6 space-y-6">
             <div>
                 <label for="group_name" class="block text-sm font-medium text-gray-700 mb-2">Nom du groupe</label>
-                <input type="text" id="name" name="group_name" required
+                <input type="text" id="group_name" name="group_name" required
                     class="block w-full rounded-lg border-gray-300 border px-3 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" 
                     placeholder="Ex: Famille">
             </div>
@@ -95,10 +96,23 @@
                 </div>
             </div>
 
+            @if (request()->is('group'))
+                <input type="hidden" name="id" id="groupId" value="{{ $group['id'] }}">
+            @endif
+
             <div class="pt-4 flex gap-3">
-                <button type="submit" class="flex-1 bg-blue-600 text-white py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-sm">
-                    Enregistrer le groupe
-                </button>
+                @if (request()->is('group'))
+                    <button 
+                        type="submit" 
+                        class="flex-1 bg-blue-600 text-white py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-sm"
+                        >
+                        Edit le groupe
+                    </button>
+                @else
+                    <button type="submit" class="flex-1 bg-blue-600 text-white py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-sm">
+                        Enregistrer le groupe
+                    </button>
+                @endif
                 <button id="annuler_addGroupe--Button" type="reset" class="px-4 py-2.5 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
                     Annuler
                 </button>

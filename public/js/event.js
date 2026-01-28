@@ -28,6 +28,8 @@ export function setupEvents() {
     }
 
     if (edit_group_button) {
-        edit_group_button.addEventListener("click" , showEditGroupModal);
+        edit_group_button.addEventListener("click" , (e) => {
+            showEditGroupModal(e.currentTarget);
+        });
     }
 }

@@ -36,8 +36,10 @@ class groupController extends Controller
         return view("groups.groups" , compact(['groups' , 'logo']));
     }  
 
-    public function showOneGroup() {
-        return view("groups.showGroup");
+    public function showOneGroup(Request $request , GroupService $groupService) {
+        $id = $request->query('id');
+        $group = $groupService->showGroupInfo($id);
+        return view("groups.showGroup" , compact(['group']));
     }
 
     public function store(Request $request , GroupService $groupService) {
@@ -46,6 +48,16 @@ class groupController extends Controller
             'group_color' => 'required|string|max:50',
             'group_logo' => 'required|string|max:255',
         ]);
+
+        if ($request->id) {
+            $group = $groupService->showGroupInfo($request->id);
+            $group->update([
+                'name' => $request->group_name,
+                'color' => $request->group_color,
+                'logo' => $request->group_logo
+            ]);
+            return redirect()->back();
+        }
 
         $data = [
             'name' => $validated['group_name'],
@@ -56,5 +68,14 @@ class groupController extends Controller
         $groupService->creatGroup($data);
 
         return redirect()->back();
+    }
+
+    public function destroy(Request $request , GroupService $groupService) {
+        if ($request->delete) {
+            $group = $groupService->showGroupInfo($request->delete);
+            $group->delete();
+        }
+        header("Location: /home");
+        exit();
     }
 }

@@ -20,4 +20,12 @@
         public function creatGroup(array $data) {
             return group::create($data);
         }
+
+        public function showGroupInfo($id) {
+            return group::find($id);
+        }
+
+        public function deleteGroupe($id) {
+            return group::find($id)->delete();
+        }
     }

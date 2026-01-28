@@ -24,7 +24,7 @@
                         placeholder="600-000000">
                 </div>
             </div>
-            @if ($_SERVER['REQUEST_URI'] === '/home' || $_SERVER['REQUEST_URI'] === '/contacts')
+            @if (request()->is('home') || request()->is('contacts'))
                 <div>
                     <label for="contact_group" class="block text-sm font-medium text-gray-700 mb-2">Choisir un groupe</label>
                     <select id="contact_group" name="group_id" required
