@@ -72,8 +72,7 @@ class groupController extends Controller
 
     public function destroy(Request $request , GroupService $groupService) {
         if ($request->delete) {
-            $group = $groupService->showGroupInfo($request->delete);
-            $group->delete();
+            $group = $groupService->deleteGroupe($request->id);
         }
         header("Location: /home");
         exit();

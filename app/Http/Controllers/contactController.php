@@ -29,6 +29,13 @@ class contactController extends Controller
 
         $contactsService->createContact($data);
 
+        return redirect()->back()->with('success', 'Contact ajouté en success');
+    }
+
+    public function destroy(Request $request , ContactsService $contactsService) {
+        if ($request->delete) {
+            $contactsService->deleteContacts($request->delete);
+        }
         return redirect()->back();
     }
 }

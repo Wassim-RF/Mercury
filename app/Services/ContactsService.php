@@ -20,4 +20,8 @@
         public function showAllGroup() {
             return contacts::all();
         }
+
+        public function deleteContacts($id) {
+            return contacts::find($id)->delete();
+        }
     }

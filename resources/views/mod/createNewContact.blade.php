@@ -1,6 +1,7 @@
 <div class="fixed inset-0 hidden items-center justify-center bg-black/50" id="modale_NewContact_pop">
-    <form action="{{ route('contacts.store') }}" method="POST" class="w-[400px] mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 absolute">
+    <form action="/contacts/store" method="POST" class="w-[400px] mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 absolute">
         @csrf
+        @method('PUT')
         <div class="px-6 py-4 border-b border-gray-100 bg-gray-50">
             <h3 class="text-lg font-semibold text-gray-900">Créer un nouveau contact</h3>
         </div>

@@ -16,3 +16,4 @@ Route::post('/groups/store', [groupController::class , 'store'])->name('groups.s
 Route::post('/contacts/store', [contactController::class , 'store'])->name('contacts.store');
 Route::put('/groups/store', [groupController::class , 'store'])->name('groups.update');
 Route::delete('/groups/store', [groupController::class , 'destroy'])->name('groups.delete');
+Route::delete('/contacts/store' , [contactController::class , 'destroy']);
