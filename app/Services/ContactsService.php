@@ -24,4 +24,10 @@
         public function deleteContacts($id) {
             return contacts::find($id)->delete();
         }
+
+        public function searchContacts($search)
+        {
+            return contacts::where('name', 'like', "%$search%")->get();
+        }
+
     }

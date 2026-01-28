@@ -9,9 +9,15 @@ use Illuminate\Http\Request;
 
 class contactController extends Controller
 {
-    public function index(GroupService $groupService , ContactsService $contactsService) {
+    public function index(Request $request , GroupService $groupService , ContactsService $contactsService) {
         $groups = $groupService->showAllGroup();
-        $contacts = $contactsService->showAllGroup();
+        $search = $request->input('search');
+
+        if ($search) {
+            $contacts = $contactsService->searchContacts($search);
+        } else {
+            $contacts = contacts::all();
+        }
         return view("contacts.contacts" , compact(['groups' , 'contacts']));
     }
 

@@ -28,4 +28,9 @@
         public function deleteGroupe($id) {
             return group::find($id)->delete();
         }
+
+        public function searchGroup($search)
+        {
+            return group::where('name', 'like', "%$search%")->get();
+        }
     }

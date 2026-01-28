@@ -20,11 +20,11 @@
             </div>
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10 w-3/4">
 
-                <div class="relative flex-1">
+                <form action="/groups" method="GET" class="relative flex-1">
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                    <input type="text" placeholder="Search by name or email..." 
+                    <input type="text" name="search" placeholder="Search by name or email..." 
                         class="w-full pl-11 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition">
-                </div>
+                </form>
 
             </div>
 
