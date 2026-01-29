@@ -28,6 +28,15 @@ class contactController extends Controller
             'group_id' => 'required|exists:groups,id'
         ]);
 
+        if ($request->contact_id) {
+            $contact= $contactsService->showContactInfo($request->contact_id);
+            $contact->update([
+                'name' => $request->contact_name,
+                'phone_number' => $request->contact_phone
+            ]);
+            return redirect()->back();
+        }
+
         $data = [
             'name' => $validated['contact_name'],
             'phone_number' => $validated['contact_phone'],
@@ -37,14 +46,6 @@ class contactController extends Controller
         $contactsService->createContact($data);
 
         return redirect()->back()->with('success', 'Contact ajouté en success');
-    }
-
-    public function update(Request $request) {
-        contacts::find($request->contact_id)->update([
-            'name' => $request->contact_name,
-            'phone_number' => $request->contact_phone,
-            'group_id' => $request->group_id
-        ]);
     }
 
     public function destroy(Request $request , ContactsService $contactsService) {

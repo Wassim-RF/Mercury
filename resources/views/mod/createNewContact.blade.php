@@ -1,7 +1,7 @@
 <div class="fixed inset-0 hidden items-center justify-center bg-black/50" id="modale_NewContact_pop">
     <form action="/contacts/store" method="POST" id="group_form" class="w-[400px] mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 absolute">
         @csrf
-        @method('PUT')
+        {{-- @method('PUT') --}}
         <div class="px-6 py-4 border-b border-gray-100 bg-gray-50">
             <h3 class="text-lg font-semibold text-gray-900">Créer un nouveau contact</h3>
         </div>
@@ -41,8 +41,6 @@
             @if (request()->is('group'))
                 <input type="hidden" name="group_id" value="{{ request('id') }}">
             @endif
-
-            <input type="hidden" id="contact_id" name="contact_id">
 
             <div class="pt-4 flex gap-3">
                 <button type="submit" class="flex-1 bg-blue-600 text-white py-2.5 rounded-lg font-semibold hover:bg-green-700 transition-colors shadow-sm">

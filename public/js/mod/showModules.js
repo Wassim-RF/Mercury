@@ -30,23 +30,19 @@ export function showEditContactModal(button) {
     const phone = button.dataset.phone;
     const group_id = button.dataset.group;
 
-    console.log(id);
-    console.log(name);
-    console.log(phone);
-    
-
     const from = document.getElementById("group_form");
-    from.action = '/contacts/store/update';
-    from.methode = 'PUT';
+    from.action = '/contacts/store';
+    from.innerHTML += '<input type="hidden" id="contact_id" name="contact_id">'
 
     document.getElementById("contact_id").value = id;
     document.querySelector('input[name="contact_name"]').value = name;
     document.querySelector('input[name="contact_phone"]').value = phone;
-    document.querySelectorAll('select[name="group_id"]').forEach(s => {
+    document.querySelectorAll('select[name="group_id"] option').forEach(s => {
         s.selected = s.value === id;
     });
     modale_pop.classList.replace("hidden" , "flex");
 }
+
 export function showEditGroupModal(button) {
     const modale_pop = document.getElementById("modale_NewGroupe_pop");
 
@@ -54,11 +50,6 @@ export function showEditGroupModal(button) {
     const name = button.dataset.name;
     const color = button.dataset.color;
     const logo = button.dataset.logo;
-
-    console.log(id);
-    console.log(name);
-    console.log(color);
-    console.log(logo);
 
     const from = document.getElementById("group_form");
     from.action = '/groups/store';

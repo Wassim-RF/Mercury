@@ -74,76 +74,49 @@
                         <tr class="bg-gray-50 text-gray-500 text-sm border-b border-gray-200">
                             <th class="px-6 py-4 font-medium">Nom</th>
                             <th class="px-6 py-4 font-medium">Téléphone</th>
-                            <th class="px-6 py-4 font-medium">Groupe</th>
+                            <th class="px-6 py-4 font-medium">Action</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100">
-                        <tr class="hover:bg-gray-50 transition">
-                            <td class="px-6 py-4 flex items-center gap-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-semibold">
-                                    MD</div>
-                                <span class="text-gray-900 font-medium">Marie Dupont</span>
-                            </td>
-                            <td class="px-6 py-4 text-gray-500">
-                                <div class="flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                                    </svg>
-                                    +33 6 12 34 56 78
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span
-                                    class="px-3 py-1 bg-blue-50 text-blue-600 text-xs font-semibold rounded-full border border-blue-100">Famille</span>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-gray-50 transition">
-                            <td class="px-6 py-4 flex items-center gap-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-semibold">
-                                    SB</div>
-                                <span class="text-gray-900 font-medium">Sophie Bernard</span>
-                            </td>
-                            <td class="px-6 py-4 text-gray-500 text-sm">
-                                <div class="flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                                    </svg>
-                                    +33 6 11 22 33 44
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span
-                                    class="px-3 py-1 bg-blue-50 text-blue-600 text-xs font-semibold rounded-full border border-blue-100">Famille</span>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-gray-50 transition">
-                            <td class="px-6 py-4 flex items-center gap-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-semibold">
-                                    JM</div>
-                                <span class="text-gray-900 font-medium">Julie Moreau</span>
-                            </td>
-                            <td class="px-6 py-4 text-gray-500">
-                                <div class="flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                                    </svg>
-                                    +33 6 22 33 44 55
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span
-                                    class="px-3 py-1 bg-blue-50 text-blue-600 text-xs font-semibold rounded-full border border-blue-100">Famille</span>
-                            </td>
-                        </tr>
+                        @foreach ($group->Contact as $contact)
+                            <tr class="hover:bg-gray-50/50 transition border-b border-gray-100">
+                                <td class="px-6 py-4 flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold mr-4">
+                                        A </div>
+                                    <span class="font-medium text-gray-800">{{ $contact['name'] }}</span>
+                                </td>
+
+                                <td class="px-6 py-4">
+                                    <div class="text-sm text-gray-600 flex items-center">
+                                        <i class="fa-solid fa-phone mr-2 w-4"></i> {{ $contact['phone_number'] }}
+                                    </div>
+                                </td>
+
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center justify-center gap-2">
+                                        <button type="button"
+                                            class="group p-2.5 rounded-lg border border-blue-100 bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-200 shadow-sm edit_contact_btn"
+                                            data-id="{{ $contact->id }}"
+                                            data-name="{{ $contact->name }}"
+                                            data-phone="{{ $contact->phone_number }}"
+                                            data-group="{{ $contact->group_id }}"
+                                            title="Edit Contact">
+                                            <i class="fa-solid fa-pen-to-square text-sm"></i>
+                                        </button>
+                                        <form method="POST" action="/contacts/store">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="text" class="hidden" name="delete" value="{{ $contact['id'] }}">
+                                            <button type="submit"
+                                                class="group p-2.5 rounded-lg border border-red-100 bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-all duration-200 shadow-sm"
+                                                title="Delete Contact">
+                                                <i class="fa-solid fa-trash text-sm"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
