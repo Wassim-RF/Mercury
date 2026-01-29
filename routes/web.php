@@ -10,6 +10,7 @@ Route::get('/home', [groupController::class , 'index']);
 Route::get('/groups', [groupController::class , 'groups']);
 Route::get('/contacts' , [contactController::class , 'index']);
 Route::get('/group' , [groupController::class , 'showOneGroup']);
+Route::get('/contacts/ajax', [ContactController::class, 'ajaxFilter']);
 
 // Post
 Route::post('/groups/store', [groupController::class , 'store'])->name('groups.store');

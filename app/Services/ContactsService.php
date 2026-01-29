@@ -2,7 +2,7 @@
     namespace App\Services;
 
     use App\Models\contacts;
-    // use App\Models\group;
+    use App\Models\group;
 
     class ContactsService {
         public function contactsNumber() {
@@ -31,6 +31,10 @@
 
         public function showContactInfo($id) {
             return contacts::find($id);
+        }
+
+        public function filterContactsByGroup($filter) {
+            return contacts::where('group_id' , $filter)->get();
         }
 
     }

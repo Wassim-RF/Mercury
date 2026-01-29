@@ -13,23 +13,24 @@
                 </button>
             </div>
 
-            <div class="flex gap-4 mb-6">
-                <form method="GET" action="/contacts" class="relative flex-1">
+            <form id="filterForm" method="GET" class="flex gap-4 mb-6">
+                <div class="relative flex-1">
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                    <input type="text" name="search" placeholder="Search by name or email..." 
-                        class="w-full pl-11 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition">
-                </form>
+                    <input type="text" id="search" name="search" placeholder="Search by name or email..." 
+                        class="w-full pl-11 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg">
+                </div>
+
                 <div class="relative w-64">
                     <i class="fa-solid fa-filter absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                    <select class="w-full pl-11 pr-10 py-2.5 bg-gray-50 border border-gray-200 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-blue-100 cursor-pointer">
-                        <option>All Groups</option>
-                        <option>Work</option>
-                        <option>Family</option>
-                        <option>Friends</option>
+                    <select id="filter" name="filter"
+                        class="w-full pl-11 pr-10 py-2.5 bg-gray-50 border border-gray-200 rounded-lg">
+                        <option value="">All Groups</option>
+                        @foreach ($groups as $group)
+                            <option value="{{ $group->id }}">{{ $group->name }}</option>
+                        @endforeach
                     </select>
-                    <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none text-xs"></i>
                 </div>
-            </div>
+            </form>
 
             <div class="overflow-hidden border border-gray-100 rounded-lg">
                 <table class="w-full text-left bg-white">
@@ -41,50 +42,8 @@
                             <th class="px-6 py-4 text-sm font-semibold text-gray-600">Actions</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-100">
-                        @foreach ($contacts as $contact)
-                            <tr class="hover:bg-gray-50/50 transition border-b border-gray-100">
-                                <td class="px-6 py-4 flex items-center">
-                                    <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold mr-4">
-                                        A </div>
-                                    <span class="font-medium text-gray-800">{{ $contact['name'] }}</span>
-                                </td>
-
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-600 flex items-center">
-                                        <i class="fa-solid fa-phone mr-2 w-4"></i> {{ $contact['phone_number'] }}
-                                    </div>
-                                </td>
-
-                                <td class="px-6 py-4">
-                                    <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold uppercase tracking-wider">{{ $contact->Group['name'] }}</span>
-                                </td>
-
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center justify-center gap-2">
-                                        <button type="button"
-                                            class="group p-2.5 rounded-lg border border-blue-100 bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-200 shadow-sm edit_contact_btn"
-                                            data-id="{{ $contact->id }}"
-                                            data-name="{{ $contact->name }}"
-                                            data-phone="{{ $contact->phone_number }}"
-                                            data-group="{{ $contact->group_id }}"
-                                            title="Edit Contact">
-                                            <i class="fa-solid fa-pen-to-square text-sm"></i>
-                                        </button>
-                                        <form method="POST" action="/contacts/store">
-                                            @csrf
-                                            @method('DELETE')
-                                            <input type="text" class="hidden" name="delete" value="{{ $contact['id'] }}">
-                                            <button type="submit"
-                                                class="group p-2.5 rounded-lg border border-red-100 bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-all duration-200 shadow-sm"
-                                                title="Delete Contact">
-                                                <i class="fa-solid fa-trash text-sm"></i>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
+                    <tbody class="divide-y divide-gray-100" id="contacts-container">
+                        @include('contacts.partials.contacts_list' , ['contacts' => $contacts])
                     </tbody>
                 </table>
             </div>
@@ -92,4 +51,11 @@
     </main>
     @include('mod.createNewContact')
     <script type="module" src="{{ asset('js/script.js') }}"></script>
+    <script>
+        const form = document.getElementById("filterForm");
+
+        if (form) {
+            form.addEventListener("submit", (e) => e.preventDefault());
+        }
+    </script>
 </body>

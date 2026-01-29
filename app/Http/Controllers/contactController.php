@@ -11,13 +11,8 @@ class contactController extends Controller
 {
     public function index(Request $request , GroupService $groupService , ContactsService $contactsService) {
         $groups = $groupService->showAllGroup();
-        $search = $request->input('search');
 
-        if ($search) {
-            $contacts = $contactsService->searchContacts($search);
-        } else {
-            $contacts = contacts::all();
-        }
+        $contacts = contacts::all();
         return view("contacts.contacts" , compact(['groups' , 'contacts']));
     }
 
@@ -53,5 +48,20 @@ class contactController extends Controller
             $contactsService->deleteContacts($request->delete);
         }
         return redirect()->back();
+    }
+
+    public function ajaxFilter(Request $request , ContactsService $contactsService) {
+        $search = $request->input('search');
+        $filter = $request->input('filter');
+
+        if ($search) {
+            $contacts = $contactsService->searchContacts($search);
+        } elseif ($filter) {
+            $contacts = $contactsService->filterContactsByGroup($filter);
+        } else {
+            $contacts = Contacts::all();
+        }
+        
+        return view('contacts.partials.contacts_list' , compact('contacts'))->render();
     }
 }

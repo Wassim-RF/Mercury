@@ -4,6 +4,7 @@ import {showAddContactModal} from './mod/showModules.js';
 import {hiddeAddContactModal} from './mod/showModules.js';
 import {showEditGroupModal} from './mod/showModules.js';
 import {showEditContactModal} from './mod/showModules.js';
+import {loadContacts} from './mod/ajax.js';
 
 export function setupEvents() {
     const create_newGroupeButton = document.getElementById("create_newGroupe--Button");
@@ -12,6 +13,8 @@ export function setupEvents() {
     const annuler_addContactButton = document.getElementById("annuler_addContact--Button");
     const edit_group_button = document.getElementById("edit_group_button");
     const edit_contact_btn = document.querySelectorAll(".edit_contact_btn");
+    const search = document.getElementById("search");
+    const filter = document.getElementById("filter");
 
     if (create_newGroupeButton) {
         create_newGroupeButton.addEventListener("click" , showAddGroupModal);
@@ -41,5 +44,13 @@ export function setupEvents() {
                 showEditContactModal(e.currentTarget);
             });
         });
+    }
+
+    if (search) {
+        search.addEventListener("keyup" , loadContacts);
+    }
+
+    if (filter) {
+        filter.addEventListener("change" , loadContacts);
     }
 }
