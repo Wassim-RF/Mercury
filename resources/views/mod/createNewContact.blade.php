@@ -46,7 +46,7 @@
                 <button type="submit" class="flex-1 bg-blue-600 text-white py-2.5 rounded-lg font-semibold hover:bg-green-700 transition-colors shadow-sm">
                     Enregistrer le contact
                 </button>
-                <button id="annuler_addContact--Button" type="reset" class="px-4 py-2.5 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                <button id="annuler_addContact--Button" type="button" class="px-4 py-2.5 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
                     Annuler
                 </button>
             </div>

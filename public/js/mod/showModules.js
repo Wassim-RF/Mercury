@@ -38,8 +38,9 @@ export function showEditContactModal(button) {
     document.querySelector('input[name="contact_name"]').value = name;
     document.querySelector('input[name="contact_phone"]').value = phone;
     document.querySelectorAll('select[name="group_id"] option').forEach(s => {
-        s.selected = s.value === id;
+        s.selected = s.value === group_id;
     });
+    
     modale_pop.classList.replace("hidden" , "flex");
 }
 

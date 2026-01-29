@@ -123,9 +123,49 @@
 
         </section>
     </main>
+    @if (session('update'))
+<div 
+    id="toast-update"
+    class="fixed top-6 right-6 z-50 animate-slide-in"
+>
+    <div class="flex items-center gap-3 bg-blue-500 text-white px-5 py-4 rounded-xl shadow-2xl min-w-[280px]">
+        
+        <!-- Icon -->
+        <div class="bg-white/20 p-2 rounded-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" 
+                 viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M11 5h2m-1-1v2m-6 4h12M5 19h14" />
+            </svg>
+        </div>
+
+        <!-- Message -->
+        <div class="flex-1 text-sm font-medium">
+            {{ session('update') }}
+        </div>
+
+        <!-- Close Button -->
+        <button onclick="closeToast('toast-update')" class="text-white/80 hover:text-white text-lg leading-none">
+            ✕
+        </button>
+    </div>
+</div>
+@endif
+
     @include('mod.createNewContact')
     @include('mod.createNewGroup')
     <script type="module" src="{{ asset('js/script.js') }}"></script>
+    <script>
+        function closeToast(id) {
+            const toast = document.getElementById(id);
+            if (toast) toast.remove();
+        }
+        setTimeout(() => {
+            closeToast('toast-success');
+            closeToast('toast-update');
+        }, 5000);
+    </script>
+
 </body>
 
 </html>

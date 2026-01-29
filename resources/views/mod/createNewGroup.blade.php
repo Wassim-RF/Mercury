@@ -113,7 +113,7 @@
                         Enregistrer le groupe
                     </button>
                 @endif
-                <button id="annuler_addGroupe--Button" type="reset" class="px-4 py-2.5 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                <button id="annuler_addGroupe--Button" type="button" class="px-4 py-2.5 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
                     Annuler
                 </button>
             </div>

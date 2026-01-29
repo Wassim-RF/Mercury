@@ -13,6 +13,6 @@ class contacts extends Model
     ];
 
     public function Group() {
-        return $this->belongsTo(Group::class);
+        return $this->belongsTo(group::class);
     }
 }

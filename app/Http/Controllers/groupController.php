@@ -61,7 +61,7 @@ class groupController extends Controller
                 'color' => $request->group_color,
                 'logo' => $request->group_logo
             ]);
-            return redirect()->back();
+            return redirect()->back()->with('update', 'Contact modifié avec succès ✏️');
         }
 
         $data = [
@@ -72,7 +72,7 @@ class groupController extends Controller
 
         $groupService->creatGroup($data);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Contact créé avec succès 🎉');
     }
 
     public function destroy(Request $request , GroupService $groupService) {

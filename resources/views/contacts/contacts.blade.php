@@ -57,7 +57,7 @@
                                 </td>
 
                                 <td class="px-6 py-4">
-                                    <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold uppercase tracking-wider">Work</span>
+                                    <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold uppercase tracking-wider">{{ $contact->Group['name'] }}</span>
                                 </td>
 
                                 <td class="px-6 py-4">
